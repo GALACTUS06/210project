@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Misinformation–Disinformation Flowchart</title>
+    <meta
+      name="description"
+      content="Simple interactive storyline showing how facts can shift into misinformation and disinformation."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="title-group">
+        <p class="eyebrow">Information Ecology Project</p>
+        <h1>Misinformation–Disinformation Flowchart</h1>
+        <p class="build-stamp" aria-label="Build version">Build: Tree Map v2026-04-16</p>
+        <p class="subtitle">
+          Explore a tree-style storyline: one starting fact branches into different misinformation paths.
+        </p>
+      </div>
+      <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle light and dark mode"
+      >
+        Toggle Theme
+      </button>
+    </header>
+
+    <main class="layout" id="mainContent">
+      <noscript>
+        <p class="noscript-note">JavaScript is required to render the interactive story tree. Please enable JavaScript.</p>
+      </noscript>
+      <aside class="sidebar-panel" aria-label="Flowchart nodes">
+        <h2>Story Nodes</h2>
+        <p class="hint">Select any node directly, or use Next/Previous inside the active branch.</p>
+        <h3 class="branch-title">Branch Stories</h3>
+        <div id="storyTabs" class="story-tabs" role="tablist" aria-label="Story branches"></div>
+        <section aria-label="Node tree map">
+          <div id="storyTree" class="story-tree" role="tree" aria-label="Story nodes tree map"></div>
+        </section>
+      </aside>
+
+      <section class="content-panel" aria-label="Current stage details">
+        <div class="panel-header">
+          <h2>Main Path</h2>
+          <p id="stepStatus" class="pathway-status" aria-live="polite"></p>
+        </div>
+
+        <section class="overview-strip" aria-label="Project overview">
+          <article class="overview-card">
+            <p class="overview-label">Active Branch</p>
+            <p id="overviewStages" class="overview-value">Mishearing Path</p>
+          </article>
+          <article class="overview-card">
+            <p class="overview-label">Evidence base</p>
+            <p id="overviewSources" class="overview-value">8 sources</p>
+          </article>
+          <article class="overview-card">
+            <p class="overview-label">Keyboard help</p>
+            <p class="overview-value">Left / Right arrows</p>
+          </article>
+        </section>
+
+        <ol id="flowTrack" class="flow-track" aria-label="Linear flow path"></ol>
+
+        <article id="stageCard" class="stage-card" tabindex="-1">
+          <div class="stage-meta">
+            <span id="stageBadge" class="stage-badge">Step 1</span>
+            <span id="stageGroup" class="stage-chip">Fact Base</span>
+            <span id="stageSourceCount" class="stage-chip">2 sources</span>
+          </div>
+          <h3 id="stageTitle">Stage</h3>
+          <p id="stageTransition" class="stage-transition"></p>
+          <p id="stageDefinition"></p>
+          <p><strong>Example:</strong> <span id="stageExample"></span></p>
+          <p><strong>Why this matters:</strong> <span id="stageWhy"></span></p>
+
+          <h4>Illustration</h4>
+          <img
+            id="stageIllustration"
+            src=""
+            alt=""
+            class="stage-illustration"
+            width="560"
+            height="280"
+          />
+
+          <h4>Supporting Sources</h4>
+          <ul id="stageSources" class="source-list"></ul>
+        </article>
+
+        <div class="step-controls" aria-label="Linear flow controls">
+          <button id="prevStep" type="button" class="step-btn" aria-label="Go to previous node">Previous</button>
+          <button id="nextStep" type="button" class="step-btn" aria-label="Go to next node">Next</button>
+        </div>
+
+        <section class="all-sources" aria-label="Annotated bibliography references">
+          <h3>All Sources</h3>
+          <ul id="sourceList" class="source-list"></ul>
+        </section>
+      </section>
+    </main>
+
+    <script src="content/nodes.js"></script>
+    <script src="src/app.js" defer></script>
+  </body>
+</html>

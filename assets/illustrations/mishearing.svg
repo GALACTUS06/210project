@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Mishearing placeholder illustration">
+  <rect width="800" height="400" fill="#fff7ea" />
+  <path d="M130 260 Q240 120 350 260" stroke="#a3541e" stroke-width="14" fill="none" />
+  <path d="M360 260 Q470 120 580 260" stroke="#a3541e" stroke-width="14" fill="none" opacity="0.45" />
+  <text x="120" y="320" font-size="30" fill="#5f3a1f" font-family="Segoe UI, sans-serif">Meaning shifts during retelling</text>
+</svg>

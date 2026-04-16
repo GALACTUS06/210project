@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Public reaction placeholder illustration">
+  <rect width="800" height="400" fill="#f0ecf2" />
+  <circle cx="170" cy="220" r="48" fill="#7f2f52" />
+  <circle cx="300" cy="200" r="58" fill="#a3541e" opacity="0.9" />
+  <circle cx="450" cy="220" r="52" fill="#275f8f" opacity="0.86" />
+  <circle cx="600" cy="200" r="60" fill="#2f7a4f" opacity="0.86" />
+  <text x="145" y="320" font-size="30" fill="#3d2a35" font-family="Segoe UI, sans-serif">Behavior, trust, and emotion</text>
+</svg>

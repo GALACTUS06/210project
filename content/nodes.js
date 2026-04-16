@@ -1,0 +1,383 @@
+window.EMBEDDED_NODES_DATA = {
+  "meta": {
+    "title": "Misinformation and Disinformation Story Tree",
+    "description": "Three branch stories with independent downstream stages for testing narrative pathways."
+  },
+  "storylines": [
+    {
+      "id": "mishearing-path",
+      "title": "Mishearing Path",
+      "description": "A fact is misunderstood and then escalates through sharing dynamics.",
+      "nodes": [
+        "fact",
+        "mishearing",
+        "propagation-mishearing",
+        "amplification-mishearing",
+        "public-reaction-mishearing",
+        "correction-mishearing"
+      ]
+    },
+    {
+      "id": "manipulation-path",
+      "title": "Manipulation Path",
+      "description": "A fact is strategically reframed, amplified, and socially internalized.",
+      "nodes": [
+        "fact",
+        "manipulation",
+        "propagation-manipulation",
+        "amplification-manipulation",
+        "public-reaction-manipulation",
+        "correction-manipulation"
+      ]
+    },
+    {
+      "id": "fabrication-path",
+      "title": "Fabrication Path",
+      "description": "A fabricated claim is seeded and gains traction before correction catches up.",
+      "nodes": [
+        "fact",
+        "fabrication",
+        "propagation-fabrication",
+        "amplification-fabrication",
+        "public-reaction-fabrication",
+        "correction-fabrication"
+      ]
+    }
+  ],
+  "sources": {
+    "Vosoughi2018": {
+      "shortCitation": "Vosoughi, Aral, and Roy (2018)",
+      "fullCitation": "Vosoughi, Soroush, Sinan Aral, and Deb Roy. \"The Spread of True and False News Online.\" Science, vol. 359, no. 6380, 2018, pp. 1146-1151.",
+      "url": "https://doi.org/10.1126/science.aap9559",
+      "annotationSummary": "False information spreads faster, farther, and more broadly than true information due to novelty and emotional engagement.",
+      "credibility": "Published in Science with large-scale platform data.",
+      "projectUse": "Explains why spread and amplification stages accelerate quickly."
+    },
+    "WardleDerakhshan2017": {
+      "shortCitation": "Wardle and Derakhshan (2017)",
+      "fullCitation": "Wardle, Claire, and Hossein Derakhshan. \"Information Disorder: Toward an Interdisciplinary Framework.\" Council of Europe, 2017.",
+      "url": "https://rm.coe.int/information-disorder-report/168076277c",
+      "annotationSummary": "Defines misinformation/disinformation framework and the roles of media, technology, and users.",
+      "credibility": "Council of Europe framework widely used in scholarship.",
+      "projectUse": "Provides conceptual backbone for all branch transitions."
+    },
+    "FerreiraCaceres2022": {
+      "shortCitation": "Ferreira Caceres et al. (2022)",
+      "fullCitation": "Ferreira Caceres, M. M., et al. \"The Impact of Misinformation on the COVID-19 Pandemic.\" AIMS Public Health, 2022.",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114791/",
+      "annotationSummary": "Documents harmful public-health outcomes linked to misinformation exposure.",
+      "credibility": "Peer-reviewed public health research based on real events.",
+      "projectUse": "Grounds the public reaction stage in real-world consequences."
+    },
+    "Pew2019": {
+      "shortCitation": "Mitchell et al. / Pew (2019)",
+      "fullCitation": "Mitchell, A., et al. \"Many Americans Say Made-Up News Is a Critical Problem That Needs to Be Fixed.\" Pew Research Center, 2019.",
+      "url": "https://www.pewresearch.org/journalism/2019/06/05/many-americans-say-made-up-news-is-a-critical-problem-that-needs-to-be-fixed/",
+      "annotationSummary": "Survey evidence shows high public concern over fake news and trust erosion.",
+      "credibility": "Pew is a respected data-driven survey organization.",
+      "projectUse": "Supports trust and social-perception impacts in reaction stages."
+    },
+    "DennissLindberg2025": {
+      "shortCitation": "Denniss and Lindberg (2025)",
+      "fullCitation": "Denniss, Emily, and Rebecca Lindberg. \"Social Media and the Spread of Misinformation: Infectious and a Threat to Public Health.\" Health Promotion International, vol. 40, no. 2, 2025.",
+      "url": "https://doi.org/10.1093/heapro/daaf023",
+      "annotationSummary": "Misinformation spreads like an infectious process, exploiting emotional triggers and vulnerable groups.",
+      "credibility": "Peer-reviewed Oxford journal in health promotion.",
+      "projectUse": "Supports viral spread logic in propagation stages."
+    },
+    "BrodaStromback2024": {
+      "shortCitation": "Broda and Stromback (2024)",
+      "fullCitation": "Broda, Elena, and Jesper Stromback. \"Misinformation, Disinformation, and Fake News: Lessons from an Interdisciplinary, Systematic Literature Review.\" Annals of the International Communication Association, vol. 48, no. 2, 2024, pp. 139-166.",
+      "url": "https://doi.org/10.1080/23808985.2024.2323736",
+      "annotationSummary": "Clarifies distinctions among misinformation, disinformation, and fake news and synthesizes cross-disciplinary findings.",
+      "credibility": "Peer-reviewed systematic review spanning multiple fields.",
+      "projectUse": "Supports definitions of initial branch divergence."
+    },
+    "Lewandowsky2012": {
+      "shortCitation": "Lewandowsky et al. (2012)",
+      "fullCitation": "Lewandowsky, Stephan, et al. \"Misinformation and Its Correction: Continued Influence and Successful Debiasing.\" Psychological Science in the Public Interest, vol. 13, no. 3, 2012, pp. 106-131.",
+      "url": "https://doi.org/10.1177/1529100612451018",
+      "annotationSummary": "Shows why misinformation persists and why repeated, clear correction is necessary.",
+      "credibility": "Foundational peer-reviewed synthesis in cognitive psychology.",
+      "projectUse": "Explains why each branch ends with difficult but necessary correction."
+    },
+    "Benkler2018": {
+      "shortCitation": "Benkler, Faris, and Roberts (2018)",
+      "fullCitation": "Benkler, Yochai, Robert Faris, and Hal Roberts. Network Propaganda: Manipulation, Disinformation, and Radicalization in American Politics. Oxford University Press, 2018.",
+      "url": "https://doi.org/10.1093/oso/9780190923624.001.0001",
+      "annotationSummary": "Demonstrates how media ecosystems and partisan structures reinforce disinformation narratives.",
+      "credibility": "Oxford University Press scholarly monograph.",
+      "projectUse": "Supports manipulation/fabrication pathways and systemic amplification."
+    }
+  },
+  "nodes": [
+    {
+      "id": "fact",
+      "title": "Fact",
+      "group": "fact",
+      "definition": "Fact is a verifiable statement grounded in reliable evidence and transparent methods. It is the common starting point before the three branch stories diverge.",
+      "example": "An official public health bulletin reports verified case data and explains its methodology.",
+      "sources": ["BrodaStromback2024", "WardleDerakhshan2017"],
+      "whyMatters": "A trustworthy baseline is necessary to detect later distortion or fabrication.",
+      "illustration": "assets/illustrations/fact.svg",
+      "illustrationAlt": "Fact stage placeholder illustration"
+    },
+    {
+      "id": "mishearing",
+      "title": "Mishearing",
+      "group": "transform",
+      "definition": "Mishearing occurs when people hear only fragments of a true message and reconstruct it inaccurately. This branch is often unintentional at the start.",
+      "example": "A person repeats only a headline and leaves out uncertainty in the full report.",
+      "sources": ["WardleDerakhshan2017", "Lewandowsky2012"],
+      "whyMatters": "Partial understanding can become sticky and hard to correct once repeated.",
+      "illustration": "assets/illustrations/mishearing.svg",
+      "illustrationAlt": "Mishearing branch node illustration"
+    },
+    {
+      "id": "manipulation",
+      "title": "Manipulation",
+      "group": "transform",
+      "definition": "Manipulation selectively reframes true information to steer interpretation. It blends fragments of truth with strategic omission or emotional framing.",
+      "example": "A real image is paired with misleading context to suggest a false conclusion.",
+      "sources": ["WardleDerakhshan2017", "Benkler2018"],
+      "whyMatters": "Manipulation can appear credible while still redirecting public understanding.",
+      "illustration": "assets/illustrations/manipulation.svg",
+      "illustrationAlt": "Manipulation branch node illustration"
+    },
+    {
+      "id": "fabrication",
+      "title": "Fabrication",
+      "group": "transform",
+      "definition": "Fabrication is deliberate invention of false content presented as real. This branch begins with intentional disinformation rather than misunderstanding.",
+      "example": "A fake article uses invented quotes and branding to mimic a trusted source.",
+      "sources": ["BrodaStromback2024", "Benkler2018"],
+      "whyMatters": "Fabrication injects fully false narratives into the information environment.",
+      "illustration": "assets/illustrations/fabrication.svg",
+      "illustrationAlt": "Fabrication branch node illustration"
+    },
+    {
+      "id": "propagation-mishearing",
+      "title": "Propagation (Mishearing Story)",
+      "group": "transform",
+      "definition": "In this branch, misheard claims spread through reposts and interpersonal sharing. Repetition increases familiarity and perceived plausibility.",
+      "example": "A misunderstood claim is reshared across group chats and short-video platforms in a single news cycle.",
+      "sources": ["Vosoughi2018", "DennissLindberg2025"],
+      "whyMatters": "Unintentional distortions can still scale into widespread misinformation.",
+      "illustration": "assets/illustrations/propagation.svg",
+      "illustrationAlt": "Propagation stage for mishearing story"
+    },
+    {
+      "id": "amplification-mishearing",
+      "title": "Amplification (Mishearing Story)",
+      "group": "impact",
+      "definition": "Algorithms and social engagement metrics elevate the misheard narrative to larger audiences. Visibility rises faster than corrective context.",
+      "example": "A misunderstood health claim trends after high engagement and recommendation boosts.",
+      "sources": ["Vosoughi2018", "DennissLindberg2025"],
+      "whyMatters": "Platform dynamics can intensify accidental misinformation into mass exposure.",
+      "illustration": "assets/illustrations/amplification.svg",
+      "illustrationAlt": "Amplification stage for mishearing story"
+    },
+    {
+      "id": "public-reaction-mishearing",
+      "title": "Public Reaction (Mishearing Story)",
+      "group": "impact",
+      "definition": "Audiences respond emotionally and behaviorally to a claim they believe is true. Confusion and mistrust can emerge even without malicious origin.",
+      "example": "People delay health actions after believing an incomplete claim shared by friends.",
+      "sources": ["FerreiraCaceres2022", "Pew2019"],
+      "whyMatters": "Even accidental distortion can produce real social and health harm.",
+      "illustration": "assets/illustrations/public-reaction.svg",
+      "illustrationAlt": "Public reaction stage for mishearing story"
+    },
+    {
+      "id": "correction-mishearing",
+      "title": "Correction (Mishearing Story)",
+      "group": "correct",
+      "definition": "Corrections here focus on restoring missing context and clarifying uncertainty. Repetition and clear replacement narratives are essential.",
+      "example": "Experts publish explainer threads that restate the original data with full context.",
+      "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
+      "whyMatters": "Context restoration can reduce harm from misunderstood facts.",
+      "illustration": "assets/illustrations/correction.svg",
+      "illustrationAlt": "Correction stage for mishearing story"
+    },
+    {
+      "id": "propagation-manipulation",
+      "title": "Propagation (Manipulation Story)",
+      "group": "transform",
+      "definition": "Manipulated narratives spread through politically aligned or emotionally primed networks. The framing itself becomes the viral unit.",
+      "example": "A selectively edited clip is repeatedly posted across partisan pages.",
+      "sources": ["Benkler2018", "Vosoughi2018"],
+      "whyMatters": "Strategic framing can spread as fast as outright falsehoods.",
+      "illustration": "assets/illustrations/propagation.svg",
+      "illustrationAlt": "Propagation stage for manipulation story"
+    },
+    {
+      "id": "amplification-manipulation",
+      "title": "Amplification (Manipulation Story)",
+      "group": "impact",
+      "definition": "Media ecosystems and engagement systems jointly boost manipulated claims. Exposure expands through influencers and networked outlets.",
+      "example": "A reframed narrative is repeated across multiple high-traffic channels within hours.",
+      "sources": ["Benkler2018", "Vosoughi2018"],
+      "whyMatters": "System-level reinforcement turns framing into dominant public interpretation.",
+      "illustration": "assets/illustrations/amplification.svg",
+      "illustrationAlt": "Amplification stage for manipulation story"
+    },
+    {
+      "id": "public-reaction-manipulation",
+      "title": "Public Reaction (Manipulation Story)",
+      "group": "impact",
+      "definition": "People react to the reframed version of events rather than underlying evidence. Polarization and institutional distrust can deepen.",
+      "example": "A manipulated narrative shifts public attitudes toward policy and expert guidance.",
+      "sources": ["Pew2019", "FerreiraCaceres2022"],
+      "whyMatters": "Manipulated framing can restructure collective understanding and trust.",
+      "illustration": "assets/illustrations/public-reaction.svg",
+      "illustrationAlt": "Public reaction stage for manipulation story"
+    },
+    {
+      "id": "correction-manipulation",
+      "title": "Correction (Manipulation Story)",
+      "group": "correct",
+      "definition": "Correction must not only debunk facts but also reintroduce missing context. Debiasing is harder when narrative identity has formed around the manipulation.",
+      "example": "Fact-check teams publish side-by-side context comparisons and repeated clarification posts.",
+      "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
+      "whyMatters": "Contextual correction can counter narrative-level distortion over time.",
+      "illustration": "assets/illustrations/correction.svg",
+      "illustrationAlt": "Correction stage for manipulation story"
+    },
+    {
+      "id": "propagation-fabrication",
+      "title": "Propagation (Fabrication Story)",
+      "group": "transform",
+      "definition": "Fabricated claims are intentionally seeded into networks and copied rapidly. Novelty and shock value improve transmission speed.",
+      "example": "A fake institutional statement is reposted across anonymous and semi-public channels.",
+      "sources": ["Vosoughi2018", "DennissLindberg2025"],
+      "whyMatters": "Intentional falsehoods can spread before verification infrastructures respond.",
+      "illustration": "assets/illustrations/propagation.svg",
+      "illustrationAlt": "Propagation stage for fabrication story"
+    },
+    {
+      "id": "amplification-fabrication",
+      "title": "Amplification (Fabrication Story)",
+      "group": "impact",
+      "definition": "Once fabricated content attracts engagement, algorithmic recommendation and coordinated sharing elevate visibility. The claim appears mainstream despite false origins.",
+      "example": "A fabricated conspiracy post is boosted by high-traffic accounts and enters trending spaces.",
+      "sources": ["Vosoughi2018", "Benkler2018"],
+      "whyMatters": "Amplification can normalize fabricated narratives as perceived truth.",
+      "illustration": "assets/illustrations/amplification.svg",
+      "illustrationAlt": "Amplification stage for fabrication story"
+    },
+    {
+      "id": "public-reaction-fabrication",
+      "title": "Public Reaction (Fabrication Story)",
+      "group": "impact",
+      "definition": "Public behavior shifts in response to fully false narratives, often with heightened anxiety or hostility. Trust in institutions can decline sharply.",
+      "example": "A fabricated treatment rumor causes panic purchases and avoidance of credible care.",
+      "sources": ["FerreiraCaceres2022", "Pew2019"],
+      "whyMatters": "Fabrication can produce severe downstream harm because the premise is entirely false.",
+      "illustration": "assets/illustrations/public-reaction.svg",
+      "illustrationAlt": "Public reaction stage for fabrication story"
+    },
+    {
+      "id": "correction-fabrication",
+      "title": "Correction (Fabrication Story)",
+      "group": "correct",
+      "definition": "Correction requires explicit debunking, source verification, and repeated counter-messaging. Continued influence effects can persist after exposure to fabricated claims.",
+      "example": "Institutions issue formal debunks, evidence links, and repeated updates across multiple channels.",
+      "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
+      "whyMatters": "Rapid, repeated correction is necessary to contain fabricated misinformation damage.",
+      "illustration": "assets/illustrations/correction.svg",
+      "illustrationAlt": "Correction stage for fabrication story"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "fact",
+      "target": "mishearing",
+      "label": "partial understanding"
+    },
+    {
+      "id": "e2",
+      "source": "mishearing",
+      "target": "propagation-mishearing",
+      "label": "retelling"
+    },
+    {
+      "id": "e3",
+      "source": "propagation-mishearing",
+      "target": "amplification-mishearing",
+      "label": "engagement boost"
+    },
+    {
+      "id": "e4",
+      "source": "amplification-mishearing",
+      "target": "public-reaction-mishearing",
+      "label": "mass exposure"
+    },
+    {
+      "id": "e5",
+      "source": "public-reaction-mishearing",
+      "target": "correction-mishearing",
+      "label": "verification response"
+    },
+    {
+      "id": "e6",
+      "source": "fact",
+      "target": "manipulation",
+      "label": "strategic reframing"
+    },
+    {
+      "id": "e7",
+      "source": "manipulation",
+      "target": "propagation-manipulation",
+      "label": "framed retelling"
+    },
+    {
+      "id": "e8",
+      "source": "propagation-manipulation",
+      "target": "amplification-manipulation",
+      "label": "ecosystem reinforcement"
+    },
+    {
+      "id": "e9",
+      "source": "amplification-manipulation",
+      "target": "public-reaction-manipulation",
+      "label": "narrative internalization"
+    },
+    {
+      "id": "e10",
+      "source": "public-reaction-manipulation",
+      "target": "correction-manipulation",
+      "label": "contextual debiasing"
+    },
+    {
+      "id": "e11",
+      "source": "fact",
+      "target": "fabrication",
+      "label": "invented narrative"
+    },
+    {
+      "id": "e12",
+      "source": "fabrication",
+      "target": "propagation-fabrication",
+      "label": "false seeding"
+    },
+    {
+      "id": "e13",
+      "source": "propagation-fabrication",
+      "target": "amplification-fabrication",
+      "label": "algorithmic scaling"
+    },
+    {
+      "id": "e14",
+      "source": "amplification-fabrication",
+      "target": "public-reaction-fabrication",
+      "label": "panic and distrust"
+    },
+    {
+      "id": "e15",
+      "source": "public-reaction-fabrication",
+      "target": "correction-fabrication",
+      "label": "formal debunking"
+    }
+  ]
+};
