@@ -17,6 +17,9 @@ const stageTransition = document.getElementById("stageTransition");
 const stageDefinition = document.getElementById("stageDefinition");
 const stageExample = document.getElementById("stageExample");
 const stageWhy = document.getElementById("stageWhy");
+const stageVideoWrap = document.getElementById("stageVideoWrap");
+const stageVideo = document.getElementById("stageVideo");
+const stageVideoCredit = document.getElementById("stageVideoCredit");
 const stageIllustration = document.getElementById("stageIllustration");
 const stageSources = document.getElementById("stageSources");
 
@@ -211,6 +214,45 @@ function renderFlowTrack(pathIds, nodesById, edgeMap) {
   });
 }
 
+function getYouTubeEmbedUrl(videoInput) {
+  if (!videoInput) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(videoInput);
+    const host = parsed.hostname.replace(/^www\./, "");
+
+    if (host === "youtu.be") {
+      const id = parsed.pathname.split("/").filter(Boolean)[0];
+      return id ? `https://www.youtube.com/embed/${id}` : "";
+    }
+
+    if (host === "youtube.com" || host === "m.youtube.com") {
+      if (parsed.pathname === "/watch") {
+        const id = parsed.searchParams.get("v");
+        return id ? `https://www.youtube.com/embed/${id}` : "";
+      }
+
+      if (parsed.pathname.startsWith("/embed/")) {
+        const id = parsed.pathname.split("/").filter(Boolean)[1];
+        return id ? `https://www.youtube.com/embed/${id}` : "";
+      }
+    }
+  } catch (_error) {
+    return "";
+  }
+
+  return "";
+}
+
+function getNodeVideoEmbedUrl(node) {
+  if (node.videoUrl) {
+    return getYouTubeEmbedUrl(node.videoUrl);
+  }
+  return getYouTubeEmbedUrl(node.videoEmbedUrl);
+}
+
 function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
   stageBadge.textContent = `Step ${currentIndex + 1} of ${pathLength}`;
   stageGroup.textContent = getGroupLabel(node.group);
@@ -220,6 +262,32 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
   stageDefinition.textContent = node.definition;
   stageExample.textContent = node.example;
   stageWhy.textContent = node.whyMatters;
+
+  const videoEmbedUrl = getNodeVideoEmbedUrl(node);
+  const hasVideo = Boolean(videoEmbedUrl);
+  if (hasVideo) {
+    stageVideoWrap.hidden = false;
+    stageVideo.src = videoEmbedUrl;
+    stageVideo.title = node.videoTitle || `Video for ${node.title}`;
+    if (node.videoCreditText && node.videoCreditUrl) {
+      stageVideoCredit.textContent = "Video source: ";
+      const creditLink = document.createElement("a");
+      creditLink.href = node.videoCreditUrl;
+      creditLink.target = "_blank";
+      creditLink.rel = "noopener noreferrer";
+      creditLink.textContent = node.videoCreditText;
+      stageVideoCredit.appendChild(creditLink);
+    } else {
+      stageVideoCredit.textContent = "";
+    }
+    stageIllustration.hidden = true;
+  } else {
+    stageVideoWrap.hidden = true;
+    stageVideo.src = "";
+    stageVideoCredit.textContent = "";
+    stageIllustration.hidden = false;
+  }
+
   stageIllustration.src = node.illustration;
   stageIllustration.alt = node.illustrationAlt;
 

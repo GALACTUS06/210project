@@ -119,6 +119,10 @@ window.EMBEDDED_NODES_DATA = {
       "example": "An official public health bulletin reports verified case data and explains its methodology.",
       "sources": ["BrodaStromback2024", "WardleDerakhshan2017"],
       "whyMatters": "A trustworthy baseline is necessary to detect later distortion or fabrication.",
+      "videoUrl": "https://www.youtube.com/watch?v=Yx60GAWQYIc",
+      "videoTitle": "General Path Introduction Video",
+      "videoCreditText": "YouTube: General Path - Introduction",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=Yx60GAWQYIc",
       "illustration": "assets/illustrations/fact.svg",
       "illustrationAlt": "Fact stage placeholder illustration"
     },
@@ -141,6 +145,10 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A real image is paired with misleading context to suggest a false conclusion.",
       "sources": ["WardleDerakhshan2017", "Benkler2018"],
       "whyMatters": "Manipulation can appear credible while still redirecting public understanding.",
+      "videoUrl": "https://www.youtube.com/watch?v=PSUF8mAoTdg",
+      "videoTitle": "Manipulation Path Video",
+      "videoCreditText": "YouTube: Manipulation Path - Manipulation",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=PSUF8mAoTdg",
       "illustration": "assets/illustrations/manipulation.svg",
       "illustrationAlt": "Manipulation branch node illustration"
     },

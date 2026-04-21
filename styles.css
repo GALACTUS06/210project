@@ -424,6 +424,24 @@ body {
   background: var(--surface-soft);
 }
 
+.stage-video-wrap {
+  margin-bottom: 0.7rem;
+}
+
+.stage-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #000;
+}
+
+.video-credit {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 .step-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
