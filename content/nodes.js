@@ -119,11 +119,7 @@ window.EMBEDDED_NODES_DATA = {
       "example": "An official public health bulletin reports verified case data and explains its methodology.",
       "sources": ["BrodaStromback2024", "WardleDerakhshan2017"],
       "whyMatters": "A trustworthy baseline is necessary to detect later distortion or fabrication.",
-      "videoUrl": "https://www.youtube.com/watch?v=Yx60GAWQYIc",
-      "videoTitle": "General Path Introduction Video",
-      "videoCreditText": "YouTube: General Path - Introduction",
-      "videoCreditUrl": "https://www.youtube.com/watch?v=Yx60GAWQYIc",
-      "illustration": "assets/illustrations/fact.svg",
+      "illustration": "Source/FACT.png",
       "illustrationAlt": "Fact stage placeholder illustration"
     },
     {
@@ -134,6 +130,10 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A person repeats only a headline and leaves out uncertainty in the full report.",
       "sources": ["WardleDerakhshan2017", "Lewandowsky2012"],
       "whyMatters": "Partial understanding can become sticky and hard to correct once repeated.",
+      "videoUrl": "https://www.youtube.com/watch?v=MCuCBt24hAk",
+      "videoTitle": "Mishearing Illustration Video",
+      "videoCreditText": "YouTube: Mishearing",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=MCuCBt24hAk",
       "illustration": "assets/illustrations/mishearing.svg",
       "illustrationAlt": "Mishearing branch node illustration"
     },
