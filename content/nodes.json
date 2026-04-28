@@ -1,4 +1,4 @@
-﻿{
+{
   "meta": {
     "title": "Misinformation and Disinformation Story Tree",
     "description": "Three branch stories with independent downstream stages for testing narrative pathways."
@@ -119,7 +119,7 @@
       "example": "An official public health bulletin reports verified case data and explains its methodology.",
       "sources": ["BrodaStromback2024", "WardleDerakhshan2017"],
       "whyMatters": "A trustworthy baseline is necessary to detect later distortion or fabrication.",
-      "illustration": "Source/FACT.png",
+      "illustration": "assets/illustrations/FACT.png",
       "illustrationAlt": "Fact stage placeholder illustration"
     },
     {
@@ -177,7 +177,7 @@
       "example": "A misunderstood claim is reshared across group chats and short-video platforms in a single news cycle.",
       "sources": ["Vosoughi2018", "DennissLindberg2025"],
       "whyMatters": "Unintentional distortions can still scale into widespread misinformation.",
-      "illustration": "Source/Mishearing-Propagation.jpg",
+      "illustration": "assets/illustrations/Mishearing-Propagation.jpg",
       "illustrationCaption": "People that hear the rumor spread it to others within their groups as 'correct' information, interesting stories, etc.",
       "illustrationAlt": "Propagation stage for mishearing story"
     },
@@ -229,11 +229,11 @@
       "example": "A selectively edited clip is repeatedly posted across partisan pages.",
       "sources": ["Benkler2018", "Vosoughi2018"],
       "whyMatters": "Strategic framing can spread as fast as outright falsehoods.",
-      "illustration": "Source/Fabrication-Propagation.png",
+      "illustration": "assets/illustrations/Fabrication-Propagation.png",
       "illustrationCaption": "Fabrications are initially spread in small circles, garnering enough reactions. Disinfo is often propagated in circles where the original creator knows it'll gain traction and outrage.",
       "illustrationAlt": "Manipulation propagation image",
       "mediaSources": [
-        {"text": "Group-provided image: Fabrication-Propagation", "url": "Source/Fabrication-Propagation.png"}
+        {"text": "Group-provided image: Fabrication-Propagation", "url": "assets/illustrations/Fabrication-Propagation.png"}
       ]
     },
     {
@@ -297,11 +297,11 @@
       "example": "A fake institutional statement is reposted across anonymous and semi-public channels.",
       "sources": ["Vosoughi2018", "DennissLindberg2025"],
       "whyMatters": "Intentional falsehoods can spread before verification infrastructures respond.",
-      "illustration": "Source/Fabrication-Propagation.png",
+      "illustration": "assets/illustrations/Fabrication-Propagation.png",
       "illustrationCaption": "Fabrications are initially spread in small circles, garnering enough reactions. Disinfo is often propagated in circles where the original creator knows it'll gain traction and outrage.",
       "illustrationAlt": "Fabrication propagation image",
       "mediaSources": [
-        {"text": "Group-provided image: Fabrication-Propagation", "url": "Source/Fabrication-Propagation.png"}
+        {"text": "Group-provided image: Fabrication-Propagation", "url": "assets/illustrations/Fabrication-Propagation.png"}
       ]
     },
     {
@@ -347,7 +347,7 @@
       "example": "Institutions issue formal debunks, evidence links, and repeated updates across multiple channels.",
       "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
       "whyMatters": "Rapid, repeated correction is necessary to contain fabricated misinformation damage.",
-      "illustration": "Source/Fabrication-Correction.png",
+      "illustration": "assets/illustrations/Fabrication-Correction.png",
       "illustrationCaption": "CDC report detailing insufficient data on ivermectin for COVID-19 prevention/treatment, including documented observations of harm from this fabricated health claim.",
       "illustrationLink": "https://stacks.cdc.gov/view/cdc/109271",
       "illustrationLinkText": "View CDC report →",
@@ -364,11 +364,11 @@
       "example": "A selectively edited clip and a fabricated institutional statement are both repeatedly posted across aligned pages within the same news cycle.",
       "sources": ["Vosoughi2018", "DennissLindberg2025", "Benkler2018"],
       "whyMatters": "Manipulation and fabrication share the same propagation mechanics, spreading as fast as genuine news through familiar social channels.",
-      "illustration": "Source/Fabrication-Propagation.png",
+      "illustration": "assets/illustrations/Fabrication-Propagation.png",
       "illustrationCaption": "Manipulated and fabricated content are seeded in small circles that already lean toward the narrative, garnering reactions before breaking into broader audiences.",
       "illustrationAlt": "Propagation stage shared by manipulation and fabrication paths",
       "mediaSources": [
-        {"text": "Group-provided image: Fabrication-Propagation", "url": "Source/Fabrication-Propagation.png"}
+        {"text": "Group-provided image: Fabrication-Propagation", "url": "assets/illustrations/Fabrication-Propagation.png"}
       ]
     },
     {
