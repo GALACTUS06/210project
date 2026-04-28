@@ -55,6 +55,17 @@ function getGroupLabel(group) {
   return labels[group] || "Flow Stage";
 }
 
+function getDisplayNodeTitle(title) {
+  if (!title) {
+    return "";
+  }
+  return title.replace(/\s*\((Mishearing|Manipulation|Fabrication) Story\)$/i, "").trim();
+}
+
+function isPlaceholderIllustration(path) {
+  return typeof path === "string" && path.startsWith("assets/illustrations/");
+}
+
 function getEdgeMap(edges) {
   return new Map(edges.map((edge) => [`${edge.source}->${edge.target}`, edge]));
 }
@@ -116,68 +127,110 @@ function renderSourceList(sources) {
   });
 }
 
-function renderStoryTree(storylines, nodesById, onSelectNode) {
+function renderDagTree(storylines, nodesById, edges, onSelectNode) {
   storyTree.innerHTML = "";
 
-  const rootId = storylines[0]?.nodes?.[0];
-  const rootNode = nodesById[rootId];
+  const NODE_W = 146;
+  const NODE_H = 54;
+  const COL_W = 160;
+  const ROW_H = 84;
+  const PAD_X = 18;
+  const PAD_Y = 16;
 
-  if (rootNode) {
-    const rootWrap = document.createElement("div");
-    rootWrap.className = "tree-root";
+  // Map each node to its column index and which storyline rows it appears in
+  const nodeColMap = new Map();
+  const nodeStoryRows = new Map();
 
-    const rootButton = document.createElement("button");
-    rootButton.type = "button";
-    rootButton.className = "tree-node tree-root-node";
-    rootButton.dataset.nodeId = rootNode.id;
-    rootButton.textContent = rootNode.title;
-    rootButton.setAttribute("role", "treeitem");
-    rootButton.setAttribute("aria-label", `Jump to ${rootNode.title}`);
-    rootButton.addEventListener("click", () => onSelectNode(rootNode.id));
-
-    rootWrap.appendChild(rootButton);
-    storyTree.appendChild(rootWrap);
-  }
-
-  const branchesWrap = document.createElement("div");
-  branchesWrap.className = "tree-branches";
-
-  storylines.forEach((story) => {
-    const branch = document.createElement("div");
-    branch.className = "tree-branch";
-    branch.dataset.storyId = story.id;
-
-    const label = document.createElement("p");
-    label.className = "tree-branch-label";
-    label.textContent = story.title;
-
-    const nodeRail = document.createElement("div");
-    nodeRail.className = "tree-node-rail";
-
-    story.nodes.slice(1).forEach((nodeId) => {
-      const node = nodesById[nodeId];
-      if (!node) {
-        return;
+  storylines.forEach((story, storyRowIdx) => {
+    story.nodes.forEach((nodeId, colIdx) => {
+      if (!nodeColMap.has(nodeId)) {
+        nodeColMap.set(nodeId, colIdx);
       }
-
-      const nodeButton = document.createElement("button");
-      nodeButton.type = "button";
-      nodeButton.className = "tree-node";
-      nodeButton.dataset.nodeId = node.id;
-      nodeButton.dataset.storyId = story.id;
-      nodeButton.textContent = node.title;
-      nodeButton.setAttribute("role", "treeitem");
-      nodeButton.setAttribute("aria-label", `Jump to ${node.title} in ${story.title}`);
-      nodeButton.addEventListener("click", () => onSelectNode(node.id));
-      nodeRail.appendChild(nodeButton);
+      const rows = nodeStoryRows.get(nodeId) || [];
+      if (!rows.includes(storyRowIdx)) {
+        rows.push(storyRowIdx);
+      }
+      nodeStoryRows.set(nodeId, rows);
     });
-
-    branch.appendChild(label);
-    branch.appendChild(nodeRail);
-    branchesWrap.appendChild(branch);
   });
 
-  storyTree.appendChild(branchesWrap);
+  const maxCol = Math.max(0, ...nodeColMap.values());
+  const maxRow = storylines.length - 1;
+  const totalW = PAD_X * 2 + maxCol * COL_W + NODE_W;
+  const totalH = PAD_Y * 2 + maxRow * ROW_H + NODE_H;
+
+  // Compute centre pixel position for each node
+  const nodeCenter = new Map();
+  nodeColMap.forEach((col, nodeId) => {
+    const rows = nodeStoryRows.get(nodeId) || [0];
+    const avgRow = rows.reduce((a, b) => a + b, 0) / rows.length;
+    nodeCenter.set(nodeId, {
+      cx: PAD_X + col * COL_W + NODE_W / 2,
+      cy: PAD_Y + avgRow * ROW_H + NODE_H / 2
+    });
+  });
+
+  const wrapper = document.createElement("div");
+  wrapper.style.cssText = `position:relative;width:${totalW}px;height:${totalH}px;`;
+
+  // SVG overlay for bezier edges
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("width", totalW);
+  svg.setAttribute("height", totalH);
+  svg.setAttribute("aria-hidden", "true");
+  svg.style.cssText = "position:absolute;top:0;left:0;pointer-events:none;overflow:visible;";
+
+  edges.forEach((edge) => {
+    const src = nodeCenter.get(edge.source);
+    const tgt = nodeCenter.get(edge.target);
+    if (!src || !tgt) {
+      return;
+    }
+    const x1 = src.cx + NODE_W / 2;
+    const y1 = src.cy;
+    const x2 = tgt.cx - NODE_W / 2;
+    const y2 = tgt.cy;
+    const dx = Math.abs(x2 - x1) * 0.42;
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", `M ${x1} ${y1} C ${x1 + dx} ${y1} ${x2 - dx} ${y2} ${x2} ${y2}`);
+    path.setAttribute("fill", "none");
+    path.setAttribute("stroke", "var(--line)");
+    path.setAttribute("stroke-width", "1.5");
+    svg.appendChild(path);
+  });
+
+  wrapper.appendChild(svg);
+
+  // Render node buttons at computed positions
+  nodeColMap.forEach((col, nodeId) => {
+    const node = nodesById[nodeId];
+    if (!node) {
+      return;
+    }
+    const center = nodeCenter.get(nodeId);
+    const rows = nodeStoryRows.get(nodeId) || [];
+    const isShared = rows.length > 1;
+    const isRoot = col === 0;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tree-node dag-node";
+    if (isShared) {
+      btn.classList.add("dag-node-shared");
+    }
+    if (isRoot) {
+      btn.classList.add("dag-node-root");
+    }
+    btn.dataset.nodeId = nodeId;
+    btn.title = node.title;
+    btn.textContent = getDisplayNodeTitle(node.title);
+    btn.setAttribute("aria-label", `Go to ${getDisplayNodeTitle(node.title)}${isShared ? " (shared stage)" : ""}`);
+    btn.style.cssText = `position:absolute;left:${center.cx - NODE_W / 2}px;top:${center.cy - NODE_H / 2}px;width:${NODE_W}px;height:${NODE_H}px;`;
+    btn.addEventListener("click", () => onSelectNode(nodeId));
+    wrapper.appendChild(btn);
+  });
+
+  storyTree.appendChild(wrapper);
 }
 
 function renderStoryTabs(storylines, activeId, onSelectStory) {
@@ -205,7 +258,7 @@ function renderFlowTrack(pathIds, nodesById, edgeMap) {
     const li = document.createElement("li");
     li.className = "track-item";
     li.dataset.nodeId = id;
-    li.textContent = nodesById[id]?.title || id;
+    li.textContent = getDisplayNodeTitle(nodesById[id]?.title) || id;
     flowTrack.appendChild(li);
 
     if (index < pathIds.length - 1) {
@@ -262,7 +315,7 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
   stageBadge.textContent = `Step ${currentIndex + 1} of ${pathLength}`;
   stageGroup.textContent = getGroupLabel(node.group);
   stageSourceCount.textContent = `${node.sources.length} source${node.sources.length === 1 ? "" : "s"}`;
-  stageTitle.textContent = node.title;
+  stageTitle.textContent = getDisplayNodeTitle(node.title);
   stageTransition.textContent = transitionLabel;
   stageDefinition.textContent = node.definition;
   stageExample.textContent = node.example;
@@ -303,7 +356,8 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
     stageVideoWrap.hidden = true;
     stageVideo.src = "";
     stageVideoCredit.textContent = "";
-    stageIllustration.hidden = false;
+    const canShowIllustration = Boolean(node.illustration) && !isPlaceholderIllustration(node.illustration);
+    stageIllustration.hidden = !canShowIllustration;
     if (node.illustrationCaption) {
       stageIllustrationCaption.hidden = false;
       stageIllustrationCaption.textContent = node.illustrationCaption;
@@ -332,8 +386,13 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
     }
   }
 
-  stageIllustration.src = node.illustration;
-  stageIllustration.alt = node.illustrationAlt;
+  if (!stageIllustration.hidden) {
+    stageIllustration.src = node.illustration;
+    stageIllustration.alt = node.illustrationAlt;
+  } else {
+    stageIllustration.removeAttribute("src");
+    stageIllustration.alt = "";
+  }
 
   stageSources.innerHTML = "";
   node.sources.forEach((sourceKey) => {
@@ -414,10 +473,6 @@ function updateActiveUi(currentId, activeStoryId) {
     }
   });
 
-  document.querySelectorAll(".tree-branch").forEach((branch) => {
-    branch.classList.toggle("is-active", branch.dataset.storyId === activeStoryId);
-  });
-
   document.querySelectorAll(".track-item").forEach((item) => {
     item.classList.toggle("is-active", item.dataset.nodeId === currentId);
   });
@@ -464,7 +519,7 @@ async function start() {
 
     renderSourceList(data.sources);
     overviewSources.textContent = `${Object.keys(data.sources).length} sources`;
-    renderStoryTree(storylines, nodesById, jumpToNode);
+    renderDagTree(storylines, nodesById, data.edges || [], jumpToNode);
 
     let activeStoryline = storylines[0];
     let currentIndex = 0;
@@ -495,7 +550,28 @@ async function start() {
       renderCurrentNode();
     }
 
-    function jumpToNode(nodeId) {
+    function moveStoryline(offset) {
+      const currentStoryIndex = storylines.findIndex((story) => story.id === activeStoryline.id);
+      if (currentStoryIndex < 0) {
+        return;
+      }
+      const nextIndex = currentStoryIndex + offset;
+      if (nextIndex < 0 || nextIndex >= storylines.length) {
+        return;
+      }
+      selectStoryline(storylines[nextIndex].id);
+    }
+
+    function jumpToNode(nodeId, preferredStoryId) {
+      // If the click originated from a specific branch, honour that branch first
+      if (preferredStoryId && preferredStoryId !== activeStoryline.id) {
+        const preferredStory = storylines.find((s) => s.id === preferredStoryId);
+        if (preferredStory && preferredStory.nodes.includes(nodeId)) {
+          selectStoryline(preferredStoryId, nodeId);
+          return;
+        }
+      }
+
       const inCurrent = activeStoryline.nodes.indexOf(nodeId);
       if (inCurrent >= 0) {
         currentIndex = inCurrent;
@@ -527,7 +603,7 @@ async function start() {
       renderStage(currentNode, data.sources, currentIndex, activeStoryline.nodes.length, transitionLabel);
       updateActiveUi(currentId, activeStoryline.id);
 
-      stepStatus.textContent = `${activeStoryline.title} | Step ${currentIndex + 1} of ${activeStoryline.nodes.length}: ${currentNode.title}`;
+      stepStatus.textContent = `${activeStoryline.title} | Step ${currentIndex + 1} of ${activeStoryline.nodes.length}: ${getDisplayNodeTitle(currentNode.title)}`;
       prevStepButton.disabled = currentIndex === 0;
       nextStepButton.disabled = currentIndex === activeStoryline.nodes.length - 1;
 
@@ -553,14 +629,42 @@ async function start() {
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") {
+      const activeEl = document.activeElement;
+      const isTypingContext = activeEl && (
+        activeEl.tagName === "INPUT"
+        || activeEl.tagName === "TEXTAREA"
+        || activeEl.isContentEditable
+      );
+      if (isTypingContext) {
+        return;
+      }
+
+      const key = event.key.toLowerCase();
+
+      if (key === "a") {
         event.preventDefault();
         prevStepButton.click();
+        return;
       }
-      if (event.key === "ArrowRight") {
+
+      if (key === "d") {
         event.preventDefault();
         nextStepButton.click();
+        return;
       }
+
+      if (key === "w") {
+        event.preventDefault();
+        moveStoryline(-1);
+        return;
+      }
+
+      if (key === "s") {
+        event.preventDefault();
+        moveStoryline(1);
+        return;
+      }
+
       if (event.key === "Home") {
         event.preventDefault();
         currentIndex = 0;
