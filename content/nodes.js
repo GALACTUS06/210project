@@ -131,9 +131,10 @@ window.EMBEDDED_NODES_DATA = {
       "sources": ["WardleDerakhshan2017", "Lewandowsky2012"],
       "whyMatters": "Partial understanding can become sticky and hard to correct once repeated.",
       "videoUrl": "https://www.youtube.com/watch?v=MCuCBt24hAk",
-      "videoTitle": "Mishearing Illustration Video",
-      "videoCreditText": "YouTube: Mishearing",
+      "videoTitle": "Mishearing and the Telephone-Game Effect",
+      "videoCreditText": "YouTube: Mishearing demonstration",
       "videoCreditUrl": "https://www.youtube.com/watch?v=MCuCBt24hAk",
+      "illustrationCaption": "This video demonstrates how original ideas are misheard and redrawn until they become unrecognizable, similar to the telephone-game pathway in misinformation.",
       "illustration": "assets/illustrations/mishearing.svg",
       "illustrationAlt": "Mishearing branch node illustration"
     },
@@ -160,8 +161,16 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A fake article uses invented quotes and branding to mimic a trusted source.",
       "sources": ["BrodaStromback2024", "Benkler2018"],
       "whyMatters": "Fabrication injects fully false narratives into the information environment.",
+      "videoUrl": "https://www.youtube.com/watch?v=UBfEhIJLYfY",
+      "videoTitle": "Professor Dave Debunks Flat Earth Fabrications",
+      "videoCreditText": "YouTube: Professor Dave Explains",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=UBfEhIJLYfY",
+      "illustrationCaption": "Professor Dave proves Eric Dubay uses fabrications in their 200 claims/proofs about the primitive Flat Earth Model.",
       "illustration": "assets/illustrations/fabrication.svg",
-      "illustrationAlt": "Fabrication branch node illustration"
+      "illustrationAlt": "Fabrication branch node illustration",
+      "mediaSources": [
+        {"text": "YouTube: Professor Dave Explains – Flat Earth Debunked", "url": "https://www.youtube.com/watch?v=UBfEhIJLYfY"}
+      ]
     },
     {
       "id": "propagation-mishearing",
@@ -171,7 +180,8 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A misunderstood claim is reshared across group chats and short-video platforms in a single news cycle.",
       "sources": ["Vosoughi2018", "DennissLindberg2025"],
       "whyMatters": "Unintentional distortions can still scale into widespread misinformation.",
-      "illustration": "assets/illustrations/propagation.svg",
+      "illustration": "Source/Mishearing-Propagation.jpg",
+      "illustrationCaption": "People that hear the rumor spread it to others within their groups as 'correct' information, interesting stories, etc.",
       "illustrationAlt": "Propagation stage for mishearing story"
     },
     {
@@ -182,6 +192,11 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A misunderstood health claim trends after high engagement and recommendation boosts.",
       "sources": ["Vosoughi2018", "DennissLindberg2025"],
       "whyMatters": "Platform dynamics can intensify accidental misinformation into mass exposure.",
+      "videoUrl": "https://www.youtube.com/watch?v=bnrDJGNVZgo",
+      "videoTitle": "Amplification: #ClayIsOverParty Case Study",
+      "videoCreditText": "YouTube: Amplification (Mishearing)",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=bnrDJGNVZgo",
+      "illustrationCaption": "This video shows some people misinterpreting \"#ClayIsOverParty\" as a cancellation against Dream (Minecraft Youtuber). Because so many people were propagating it\u2013the hashtag busted out of its containment and spread to other circles who didn't understand the context (AKA, amplifying it).",
       "illustration": "assets/illustrations/amplification.svg",
       "illustrationAlt": "Amplification stage for mishearing story"
     },
@@ -205,6 +220,11 @@ window.EMBEDDED_NODES_DATA = {
       "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
       "whyMatters": "Context restoration can reduce harm from misunderstood facts.",
       "illustration": "assets/illustrations/correction.svg",
+      "illustrationCaption": "Correction can come from the person being misheard or others who witnessed the original context.",
+      "illustrationQuote": "YALLLL 13 MILLION VIEWS ON THIS?? I CANNOT KEEP MY SILENCE!!!! I SAID \"NICK UH\" AND CALLED MY FRIEND THE WRONG NAME 😭 I NEVER SAY THIS WORD IN MY LIFEEE this app is so cooked man",
+      "illustrationQuoteAttribution": "— @extraemilyy on X (Feb 23, 2025), correcting the viral mishearing",
+      "illustrationLink": "https://www.dexerto.com/twitch/extraemily-clears-up-what-she-actually-said-in-viral-racist-twitch-clip-3142007/",
+      "illustrationLinkText": "Read full article (Dexerto) →",
       "illustrationAlt": "Correction stage for mishearing story"
     },
     {
@@ -215,8 +235,12 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A selectively edited clip is repeatedly posted across partisan pages.",
       "sources": ["Benkler2018", "Vosoughi2018"],
       "whyMatters": "Strategic framing can spread as fast as outright falsehoods.",
-      "illustration": "assets/illustrations/propagation.svg",
-      "illustrationAlt": "Propagation stage for manipulation story"
+      "illustration": "Source/Fabrication-Propagation.png",
+      "illustrationCaption": "Fabrications are initially spread in small circles, garnering enough reactions. Disinfo is often propagated in circles where the original creator knows it'll gain traction and outrage.",
+      "illustrationAlt": "Manipulation propagation image",
+      "mediaSources": [
+        {"text": "Group-provided image: Fabrication-Propagation", "url": "Source/Fabrication-Propagation.png"}
+      ]
     },
     {
       "id": "amplification-manipulation",
@@ -226,8 +250,16 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A reframed narrative is repeated across multiple high-traffic channels within hours.",
       "sources": ["Benkler2018", "Vosoughi2018"],
       "whyMatters": "System-level reinforcement turns framing into dominant public interpretation.",
+      "videoUrl": "https://www.youtube.com/watch?v=JLgjGU1fJHY",
+      "videoTitle": "Amplification: Disinformation Campaigns and Elections",
+      "videoCreditText": "YouTube: Amplification (Manipulation)",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=JLgjGU1fJHY",
+      "illustrationCaption": "After initial propagation, manipulated content leaves its original bubble and spreads to broader audiences through recommendation and repost networks.",
       "illustration": "assets/illustrations/amplification.svg",
-      "illustrationAlt": "Amplification stage for manipulation story"
+      "illustrationAlt": "Amplification stage for manipulation story",
+      "mediaSources": [
+        {"text": "YouTube: How disinformation campaigns amplify after initial propagation", "url": "https://www.youtube.com/watch?v=JLgjGU1fJHY"}
+      ]
     },
     {
       "id": "public-reaction-manipulation",
@@ -237,8 +269,16 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A manipulated narrative shifts public attitudes toward policy and expert guidance.",
       "sources": ["Pew2019", "FerreiraCaceres2022"],
       "whyMatters": "Manipulated framing can restructure collective understanding and trust.",
+      "videoUrl": "https://www.youtube.com/watch?v=3q84yxXRw8Y",
+      "videoTitle": "Public Reaction: Community Notes and Corrective Spread",
+      "videoCreditText": "YouTube: Public reaction to manipulated data",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=3q84yxXRw8Y",
+      "illustrationCaption": "Public reaction often branches into three outcomes: move on, correct the claim, or propagate corrective material further.",
       "illustration": "assets/illustrations/public-reaction.svg",
-      "illustrationAlt": "Public reaction stage for manipulation story"
+      "illustrationAlt": "Public reaction stage for manipulation story",
+      "mediaSources": [
+        {"text": "YouTube: Twitter/X Community Notes correcting manipulated content", "url": "https://www.youtube.com/watch?v=3q84yxXRw8Y"}
+      ]
     },
     {
       "id": "correction-manipulation",
@@ -249,7 +289,14 @@ window.EMBEDDED_NODES_DATA = {
       "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
       "whyMatters": "Contextual correction can counter narrative-level distortion over time.",
       "illustration": "assets/illustrations/correction.svg",
-      "illustrationAlt": "Correction stage for manipulation story"
+      "illustrationQuote": "The AP fact-check demonstrates how manipulated claims were corrected by tracing original sources and cross-checking the context of circulated material.",
+      "illustrationCaption": "Manipulated data in this incident were debunked by identifying source context and presenting verifiable corrections.",
+      "illustrationLink": "https://apnews.com/article/fact-check-minneapolis-minnesota-ice-shooting-1cd447e8963456af2be9a24d660ed1d6",
+      "illustrationLinkText": "Read AP News fact-check →",
+      "illustrationAlt": "Correction stage for manipulation story",
+      "mediaSources": [
+        {"text": "AP News: Fact-check – Minneapolis ICE shooting manipulated/fabricated claims", "url": "https://apnews.com/article/fact-check-minneapolis-minnesota-ice-shooting-1cd447e8963456af2be9a24d660ed1d6"}
+      ]
     },
     {
       "id": "propagation-fabrication",
@@ -259,8 +306,12 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A fake institutional statement is reposted across anonymous and semi-public channels.",
       "sources": ["Vosoughi2018", "DennissLindberg2025"],
       "whyMatters": "Intentional falsehoods can spread before verification infrastructures respond.",
-      "illustration": "assets/illustrations/propagation.svg",
-      "illustrationAlt": "Propagation stage for fabrication story"
+      "illustration": "Source/Fabrication-Propagation.png",
+      "illustrationCaption": "Fabrications are initially spread in small circles, garnering enough reactions. Disinfo is often propagated in circles where the original creator knows it'll gain traction and outrage.",
+      "illustrationAlt": "Fabrication propagation image",
+      "mediaSources": [
+        {"text": "Group-provided image: Fabrication-Propagation", "url": "Source/Fabrication-Propagation.png"}
+      ]
     },
     {
       "id": "amplification-fabrication",
@@ -270,8 +321,16 @@ window.EMBEDDED_NODES_DATA = {
       "example": "A fabricated conspiracy post is boosted by high-traffic accounts and enters trending spaces.",
       "sources": ["Vosoughi2018", "Benkler2018"],
       "whyMatters": "Amplification can normalize fabricated narratives as perceived truth.",
+      "videoUrl": "https://www.youtube.com/watch?v=JLgjGU1fJHY",
+      "videoTitle": "Amplification: Disinformation Campaigns and Elections",
+      "videoCreditText": "YouTube: Amplification (Fabrication)",
+      "videoCreditUrl": "https://www.youtube.com/watch?v=JLgjGU1fJHY",
+      "illustrationCaption": "After initial propagation, disinformation leaves its original bubble and spreads widely. Here, fabricated election content amplifies from niche posting into the general public.",
       "illustration": "assets/illustrations/amplification.svg",
-      "illustrationAlt": "Amplification stage for fabrication story"
+      "illustrationAlt": "Amplification stage for fabrication story",
+      "mediaSources": [
+        {"text": "YouTube: How disinformation campaigns amplify after initial propagation", "url": "https://www.youtube.com/watch?v=JLgjGU1fJHY"}
+      ]
     },
     {
       "id": "public-reaction-fabrication",
@@ -282,7 +341,14 @@ window.EMBEDDED_NODES_DATA = {
       "sources": ["FerreiraCaceres2022", "Pew2019"],
       "whyMatters": "Fabrication can produce severe downstream harm because the premise is entirely false.",
       "illustration": "assets/illustrations/public-reaction.svg",
-      "illustrationAlt": "Public reaction stage for fabrication story"
+      "illustrationQuote": "The AP fact-check shows that fabricated claims about the Minneapolis incident were contradicted by available evidence after detailed verification.",
+      "illustrationCaption": "Fabricated data about this incident were debunked through thorough analysis – showing how false narratives trigger real public reactions before correction arrives.",
+      "illustrationLink": "https://apnews.com/article/fact-check-minneapolis-minnesota-ice-shooting-1cd447e8963456af2be9a24d660ed1d6",
+      "illustrationLinkText": "Read AP News fact-check →",
+      "illustrationAlt": "Public reaction stage for fabrication story",
+      "mediaSources": [
+        {"text": "AP News: Fact-check – Minneapolis ICE shooting fabricated data debunked", "url": "https://apnews.com/article/fact-check-minneapolis-minnesota-ice-shooting-1cd447e8963456af2be9a24d660ed1d6"}
+      ]
     },
     {
       "id": "correction-fabrication",
@@ -292,8 +358,14 @@ window.EMBEDDED_NODES_DATA = {
       "example": "Institutions issue formal debunks, evidence links, and repeated updates across multiple channels.",
       "sources": ["Lewandowsky2012", "WardleDerakhshan2017"],
       "whyMatters": "Rapid, repeated correction is necessary to contain fabricated misinformation damage.",
-      "illustration": "assets/illustrations/correction.svg",
-      "illustrationAlt": "Correction stage for fabrication story"
+      "illustration": "Source/Fabrication-Correction.png",
+      "illustrationCaption": "CDC report detailing insufficient data on ivermectin for COVID-19 prevention/treatment, including documented observations of harm from this fabricated health claim.",
+      "illustrationLink": "https://stacks.cdc.gov/view/cdc/109271",
+      "illustrationLinkText": "View CDC report →",
+      "illustrationAlt": "Screenshot of CDC report on ivermectin and COVID-19",
+      "mediaSources": [
+        {"text": "CDC: Ivermectin and COVID-19 – Insufficient evidence and harm observations", "url": "https://stacks.cdc.gov/view/cdc/109271"}
+      ]
     }
   ],
   "edges": [

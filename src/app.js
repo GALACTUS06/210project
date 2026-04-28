@@ -21,6 +21,11 @@ const stageVideoWrap = document.getElementById("stageVideoWrap");
 const stageVideo = document.getElementById("stageVideo");
 const stageVideoCredit = document.getElementById("stageVideoCredit");
 const stageIllustration = document.getElementById("stageIllustration");
+const stageIllustrationCaption = document.getElementById("stageIllustrationCaption");
+const stageQuoteCard = document.getElementById("stageQuoteCard");
+const stageQuoteText = document.getElementById("stageQuoteText");
+const stageQuoteAttribution = document.getElementById("stageQuoteAttribution");
+const stageArticleLink = document.getElementById("stageArticleLink");
 const stageSources = document.getElementById("stageSources");
 
 async function loadData() {
@@ -281,11 +286,50 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
       stageVideoCredit.textContent = "";
     }
     stageIllustration.hidden = true;
+    stageQuoteCard.hidden = true;
+    stageQuoteText.textContent = "";
+    stageQuoteAttribution.textContent = "";
+    stageArticleLink.hidden = true;
+    stageArticleLink.href = "";
+    stageArticleLink.textContent = "";
+    if (node.illustrationCaption) {
+      stageIllustrationCaption.hidden = false;
+      stageIllustrationCaption.textContent = node.illustrationCaption;
+    } else {
+      stageIllustrationCaption.hidden = true;
+      stageIllustrationCaption.textContent = "";
+    }
   } else {
     stageVideoWrap.hidden = true;
     stageVideo.src = "";
     stageVideoCredit.textContent = "";
     stageIllustration.hidden = false;
+    if (node.illustrationCaption) {
+      stageIllustrationCaption.hidden = false;
+      stageIllustrationCaption.textContent = node.illustrationCaption;
+    } else {
+      stageIllustrationCaption.hidden = true;
+      stageIllustrationCaption.textContent = "";
+    }
+    if (node.illustrationQuote) {
+      stageIllustration.hidden = true;
+      stageQuoteCard.hidden = false;
+      stageQuoteText.textContent = node.illustrationQuote;
+      stageQuoteAttribution.textContent = node.illustrationQuoteAttribution || "";
+    } else {
+      stageQuoteCard.hidden = true;
+      stageQuoteText.textContent = "";
+      stageQuoteAttribution.textContent = "";
+    }
+    if (node.illustrationLink) {
+      stageArticleLink.hidden = false;
+      stageArticleLink.href = node.illustrationLink;
+      stageArticleLink.textContent = node.illustrationLinkText || "View article";
+    } else {
+      stageArticleLink.hidden = true;
+      stageArticleLink.href = "";
+      stageArticleLink.textContent = "";
+    }
   }
 
   stageIllustration.src = node.illustration;
@@ -339,6 +383,24 @@ function renderStage(node, sources, currentIndex, pathLength, transitionLabel) {
     }
     stageSources.appendChild(li);
   });
+
+  if (node.mediaSources && node.mediaSources.length > 0) {
+    const divider = document.createElement("li");
+    divider.className = "source-media-divider";
+    divider.textContent = "Media used in this illustration:";
+    stageSources.appendChild(divider);
+    node.mediaSources.forEach((ms) => {
+      const li = document.createElement("li");
+      li.className = "source-item source-media-item";
+      const link = document.createElement("a");
+      link.href = ms.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = ms.text;
+      li.appendChild(link);
+      stageSources.appendChild(li);
+    });
+  }
 }
 
 function updateActiveUi(currentId, activeStoryId) {
