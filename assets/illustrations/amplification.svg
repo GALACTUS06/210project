@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Amplification placeholder illustration">
-  <rect width="800" height="400" fill="#f4edf6" />
-  <polygon points="160,140 280,140 360,90 360,310 280,260 160,260" fill="#7f2f52" />
-  <path d="M410 150 Q510 200 410 250" stroke="#7f2f52" stroke-width="12" fill="none" opacity="0.8" />
-  <path d="M460 120 Q620 200 460 280" stroke="#7f2f52" stroke-width="10" fill="none" opacity="0.55" />
-  <path d="M520 90 Q730 200 520 310" stroke="#7f2f52" stroke-width="8" fill="none" opacity="0.35" />
-</svg>
