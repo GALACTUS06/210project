@@ -204,6 +204,8 @@ window.EMBEDDED_NODES_DATA = {
       "example": "People delay health actions after believing an incomplete claim shared by friends.",
       "sources": ["FerreiraCaceres2022", "Pew2019"],
       "whyMatters": "Even accidental distortion can produce real social and health harm.",
+      "illustration": "assets/illustrations/Mishearing-Public Reaction.png",
+      "illustrationCaption": "Usually, when a mishearing goes viral, there’s three ways the public reacts: propagating it, correcting it, or leaving it alone. Depending on the popularity of the mishearing and the community surrounding it, one way might dominate initially.",
       "illustrationAlt": "Public reaction stage for mishearing story"
     },
     {

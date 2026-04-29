@@ -63,7 +63,10 @@ function getDisplayNodeTitle(title) {
 }
 
 function isPlaceholderIllustration(path) {
-  return typeof path === "string" && path.startsWith("assets/illustrations/");
+  // Only legacy placeholder SVGs should be hidden; real PNG/JPG assets should render.
+  return typeof path === "string"
+    && path.startsWith("assets/illustrations/")
+    && path.toLowerCase().endsWith(".svg");
 }
 
 function getEdgeMap(edges) {
